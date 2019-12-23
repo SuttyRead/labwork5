@@ -1,0 +1,19 @@
+version: '2.1'
+
+networks:
+  test:
+
+services:
+
+  db:
+    container_name: labwork5_mysql
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: labwork5
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
